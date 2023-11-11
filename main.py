@@ -20,6 +20,9 @@ def OpenTab(title,URL):
 
 #close tab function takes an index from the user and removes the cooresponing tab from the list
 def CloseTab(index):
+  if len(tabs)==0:
+    return "No Tabs Found to close"
+  else:
     if 1<=index<=len(tabs):
       tabs.pop(index-1)
       return "Tab Closed Successfully"
