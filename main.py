@@ -17,3 +17,11 @@ def OpenTab(title,URL):
     return "Tab Added Successfully"
   else:
     return "Invalid URL"
+
+
+
+
+#using while loop we take the users input and call the function accordingly
+while True:
+
+  MainMenu()
