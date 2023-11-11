@@ -45,6 +45,9 @@ def DisplayAllTabs(list):
 
 #switch tab function takes an index form the user and prints the html content for the tab with the given index
 def SwitchTab(index):
+  if len(tabs)==0:
+    return "No Tabs Found"
+  else:
     if 1<=index<=len(tabs):
       url=str(tabs[index-1]["URL"])
       page = urlopen(url)
