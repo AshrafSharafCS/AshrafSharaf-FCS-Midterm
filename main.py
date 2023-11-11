@@ -1,4 +1,6 @@
 import validators
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
 #Greeting the user
 print("Welcome to the advanced browser tabs simulation")
 
@@ -33,11 +35,21 @@ def CloseTab(index):
 
 #display all tabs function displays all the tabs in the list including nested lists
 def DisplayAllTabs(list):
+  if len(list)==0:
+    print("No Tabs Found")
+  else:
     for i in range(len(list)):
       print(i+1,list[i]["Title"])
       for j in range(len(list[i]["NestedTabs"])):
            print("\t",j+1,list[i]["NestedTabs"][j]["Title"])
 
+#switch tab function takes an index form the user and prints the html content for the tab with the given index
+def SwitchTab(index):
+    if 1<=index<=len(tabs):
+      url=str(tabs[index-1]["URL"])
+      page = urlopen(url)
+      soup = BeautifulSoup(page, "html.parser")
+      print(soup.prettify)   
 
         
 #using while loop we take the users input and call the function accordingly
