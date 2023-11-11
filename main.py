@@ -25,3 +25,8 @@ def OpenTab(title,URL):
 while True:
 
   MainMenu()
+  choice=input("Choose an option from the menu: ")
+  if choice=='1':
+    title=input("Enter a title for your tab: ")
+    url=input("Enter the url for your tab: ")
+    print(OpenTab(title,url))
