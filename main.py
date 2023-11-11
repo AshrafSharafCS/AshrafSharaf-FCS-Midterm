@@ -25,7 +25,7 @@ def CloseTab(index):
   if len(tabs)==0:
     return "No Tabs Found to close"
   else:
-    if 1<=index<=len(tabs):
+    if 1<=int(index)<=len(tabs):
       tabs.pop(index-1)
       return "Tab Closed Successfully"
     else:
@@ -44,6 +44,7 @@ def DisplayAllTabs(list):
            print("\t",j+1,list[i]["NestedTabs"][j]["Title"])
 
 #switch tab function takes an index form the user and prints the html content for the tab with the given index
+#https://www.datacamp.com/tutorial/web-scraping-using-python
 def SwitchTab(index):
   if len(tabs)==0:
     return "No Tabs Found"
@@ -67,3 +68,8 @@ while True:
   elif choice=='2':
     index=int(input("Enter the index of the tab you want to close or press enter to close the last opened tab: "))
     print(CloseTab(index))
+  elif choice=='3':
+    index=int(input("Enter the index of the tab you want to switch : "))
+    SwitchTab(index)
+  elif choice=='4':
+    DisplayAllTabs(tabs)
