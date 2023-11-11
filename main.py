@@ -31,6 +31,13 @@ def CloseTab(index):
       return "Last tap opened is closed"
 
 
+
+def DisplayAllTabs(list):
+    for i in range(len(list)):
+      print(i+1,list[i]["Title"])
+      for j in range(len(list[i]["NestedTabs"])):
+           print("\t",j+1,list[i]["NestedTabs"][j]["Title"])
+        
 #using while loop we take the users input and call the function accordingly
 while True:
 
