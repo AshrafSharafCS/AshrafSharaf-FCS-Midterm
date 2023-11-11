@@ -33,6 +33,9 @@ def CloseTab(index):
 
 #display all tabs function displays all the tabs in the list including nested lists
 def DisplayAllTabs(list):
+  if len(list)==0:
+    print("No Tabs Found")
+  else:
     for i in range(len(list)):
       print(i+1,list[i]["Title"])
       for j in range(len(list[i]["NestedTabs"])):
