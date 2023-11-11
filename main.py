@@ -40,3 +40,6 @@ while True:
     title=input("Enter a title for your tab: ")
     url=input("Enter the url for your tab: ")
     print(OpenTab(title,url))
+  elif choice=='2':
+    index=int(input("Enter the index of the tab you want to close or press enter to close the last opened tab: "))
+    print(CloseTab(index))
