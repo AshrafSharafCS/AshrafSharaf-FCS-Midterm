@@ -18,7 +18,14 @@ def OpenTab(title,URL):
   else:
     return "Invalid URL"
 
-
+#close tab function takes an index from the user and removes the cooresponing tab from the list
+def CloseTab(index):
+    if 1<=index<=len(tabs):
+      tabs.pop(index-1)
+      return "Tab Closed Successfully"
+    else:
+      tabs.pop()
+      return "Last tap opened is closed"
 
 
 #using while loop we take the users input and call the function accordingly
