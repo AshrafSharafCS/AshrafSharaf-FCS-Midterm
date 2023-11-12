@@ -111,17 +111,20 @@ def SaveTaps(path):
     else:
       print("Path does not exist")
 
-
+#import function takes a path as an input and reads the tabs int the json file
 def ImportTabs(path):
-  with open(path, 'r') as openfile:
-    checkpath=os.path.exists(path)
-    if checkpath is True:
-      json_object = json.load(openfile)
-      print(json_object)
-    else: 
-      print("Path does not exist")
-      
-  
+  if len(tabs)==0:
+      print("No Tabs Found")
+  else:
+    with open(path, 'r') as openfile:
+      checkpath=os.path.exists(path)
+      if checkpath is True:
+        json_object = json.load(openfile)
+        print(json_object)
+      else: 
+        print("Path does not exist")
+        
+    
 
 #using while loop we take the users input and call the function accordingly
 while True:
