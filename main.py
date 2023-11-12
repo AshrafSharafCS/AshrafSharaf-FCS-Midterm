@@ -113,9 +113,6 @@ def SaveTaps(path):
 
 #import function takes a path as an input and reads the tabs int the json file
 def ImportTabs(path):
-  if len(tabs)==0:
-      print("No Tabs Found")
-  else:
     with open(path, 'r') as openfile:
       checkpath=os.path.exists(path)
       if checkpath is True:
@@ -159,4 +156,6 @@ while True:
   elif choice=='9':
     print("Program finished")
     break
+  else:
+    print("Invalid choice")
   
