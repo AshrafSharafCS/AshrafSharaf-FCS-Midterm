@@ -98,13 +98,17 @@ def ClearAllTabs():
 #https://www.freecodecamp.org/news/how-to-check-if-a-file-exists-in-python/
 
 def SaveTaps(path):
-  checkpath=os.path.exists(path)
-  if checkpath is True:
-    json_object=json.dumps(tabs)
-    with open(path,"w") as outfile:
-      outfile.write(json_object)
+  if len(tabs)==0:
+    print("No Tabs Found")
   else:
-    print("Path does not exist")
+    checkpath=os.path.exists(path)
+    if checkpath is True:
+      json_object=json.dumps(tabs)
+      with open(path,"w") as outfile:
+        outfile.write(json_object)
+        print("Tabs saved successfuly")
+    else:
+      print("Path does not exist")
 
 #using while loop we take the users input and call the function accordingly
 while True:
