@@ -10,10 +10,20 @@ tabs=[]
 def MainMenu():
   print("\n1. Open Tab \n2. Close Tab \n3. Switch Tab\n4. Display All Tabs \n5. Open Nested Tab \n6. Clear All Tabs \n7. Save Tabs \n8. Import Tabs \n9. Exit \n- - - - - - - - - - - - - - -")
 
+
+def validateURL(url):
+  validate=validators.url(url)
+  if validate is True:
+    return True
+  else:
+    return False
+
+
+
+
 #OpenTab function takes title and URL as parameters to add the tab to the tabs list and checks if any input is invalid to return invalid otherwise
 def OpenTab(title,URL):
-  validate=validators.url(URL)
-  if validate is True :
+  if validateURL(url) is True :
     dic={"Title":title , "URL":URL, "NestedTabs":[]}
     tabs.append(dic)
     return "Tab Added Successfully"
@@ -60,7 +70,11 @@ def SwitchTab(index):
       soup = BeautifulSoup(page, "html.parser")
       print(soup.prettify)   
       
-        
+
+
+
+
+  
 #using while loop we take the users input and call the function accordingly
 while True:
 
