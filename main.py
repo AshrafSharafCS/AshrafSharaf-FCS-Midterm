@@ -91,9 +91,10 @@ def ClearAllTabs():
     tabs.clear()
     print("Tabs Cleared Successfuly")
 
+#savetaps function save the tabs in the list to a json file
 def SaveTaps(path):
   json_object=json.dumps(tabs)
-  with open("Saved tabs","w") as outfile:
+  with open(path,"w") as outfile:
     outfile.write(json_object)
 
 
@@ -121,3 +122,6 @@ while True:
     print(OpenNestedTab(index,title,url))
   elif choice=='6':
     ClearAllTabs()
+  elif choice=='7':
+    path=input("Enter a file path to save the current open tabs: ")
+    SaveTaps(path)
