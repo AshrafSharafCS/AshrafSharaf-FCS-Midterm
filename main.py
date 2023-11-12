@@ -10,7 +10,7 @@ tabs=[]
 def MainMenu():
   print("\n1. Open Tab \n2. Close Tab \n3. Switch Tab\n4. Display All Tabs \n5. Open Nested Tab \n6. Clear All Tabs \n7. Save Tabs \n8. Import Tabs \n9. Exit \n- - - - - - - - - - - - - - -")
 
-
+#function to validate the url
 def validateURL(url):
   validate=validators.url(url)
   if validate is True:
@@ -69,8 +69,18 @@ def SwitchTab(index):
       page = urlopen(url)
       soup = BeautifulSoup(page, "html.parser")
       print(soup.prettify)   
-      
 
+#open nested tab function takes an index from the user and opens  nested tab with the given index
+def OpenNestedTab(index,title,url):
+  if len(tabs)==0:
+    return "No Tabs Found"
+  else:
+    if 1<=index<=len(tabs): 
+      dic={"Title":title , "URL":url}
+      tabs[index-1]["NestedTabs"].append(dic)
+      return "Nested Tab Added Successfully"
+    else:
+      return "Invalid Index"
 
 
 
