@@ -75,12 +75,12 @@ def OpenNestedTab(index,title,url):
   if len(tabs)==0:
     return "No Tabs Found"
   else:
-    if 1<=index<=len(tabs): 
+    if 1<=index<=len(tabs) and validateURL(url) is True :
       dic={"Title":title , "URL":url}
       tabs[index-1]["NestedTabs"].append(dic)
       return "Nested Tab Added Successfully"
     else:
-      return "Invalid Index"
+      return "Invalid Input"
 
 
 
@@ -102,3 +102,8 @@ while True:
     SwitchTab(index)
   elif choice=='4':
     DisplayAllTabs(tabs)
+  elif choice=='5':
+    index=int(input("Enter the index of the tab where you want to add the nested tab : "))
+    title=input("Enter a title for your nested tab: ")
+    url=input("Enter the url for your nested tab: ")
+    print(OpenNestedTab(index,title,url))
