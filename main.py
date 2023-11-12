@@ -3,6 +3,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import json
 import os.path
+import pathlib
 #Greeting the user
 print("Welcome to the advanced browser tabs simulation")
 
@@ -104,13 +105,14 @@ def ClearAllTabs():
 #i used these websites to help me with the json conversion and path existence:
 #https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/?ref=header_search
 #https://www.freecodecamp.org/news/how-to-check-if-a-file-exists-in-python/
-
+#https://www.geeksforgeeks.org/how-to-get-file-extension-in-python/
 def SaveTaps(path):
   if len(tabs)==0:
     print("No Tabs Found")
   else:
     checkpath=os.path.exists(path)
-    if checkpath is True:
+    file_extension = pathlib.Path(path).suffix
+    if checkpath is True and file_extension==".json":
       json_object=json.dumps(tabs)
       with open(path,"w") as outfile:
         outfile.write(json_object)
@@ -121,10 +123,12 @@ def SaveTaps(path):
 #import function takes a path as an input and reads the tabs int the json file
 #i used the website below to implement the Import tabs function
 #https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/?ref=header_search
+#https://www.geeksforgeeks.org/how-to-get-file-extension-in-python/
 def ImportTabs(path):
     with open(path, 'r') as openfile:
       checkpath=os.path.exists(path)
-      if checkpath is True:
+      file_extension = pathlib.Path(path).suffix
+      if checkpath is True and file_extension==".json":
         json_object = json.load(openfile)
         print(json_object)
       else: 
