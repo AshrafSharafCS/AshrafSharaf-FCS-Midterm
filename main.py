@@ -1,6 +1,7 @@
 import validators
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import json
 #Greeting the user
 print("Welcome to the advanced browser tabs simulation")
 
@@ -90,7 +91,12 @@ def ClearAllTabs():
     tabs.clear()
     print("Tabs Cleared Successfuly")
 
-  
+def SaveTaps(path):
+  json_object=json.dumps(tabs)
+  with open("Saved tabs","w") as outfile:
+    outfile.write(json_object)
+
+
 #using while loop we take the users input and call the function accordingly
 while True:
 
