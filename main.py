@@ -110,6 +110,12 @@ def SaveTaps(path):
     else:
       print("Path does not exist")
 
+def ImportTabs(path):
+  with open(path, 'r') as openfile:
+      json_object = json.load(openfile)
+      print(json_object)
+  
+
 #using while loop we take the users input and call the function accordingly
 while True:
 
@@ -137,3 +143,4 @@ while True:
   elif choice=='7':
     path=input("Enter a file path to save the current open tabs: ")
     SaveTaps(path)
+ 
