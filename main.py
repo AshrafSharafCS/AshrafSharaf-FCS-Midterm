@@ -2,6 +2,7 @@ import validators
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import json
+import os.path
 #Greeting the user
 print("Welcome to the advanced browser tabs simulation")
 
@@ -92,11 +93,18 @@ def ClearAllTabs():
     print("Tabs Cleared Successfuly")
 
 #savetaps function save the tabs in the list to a json file
-def SaveTaps(path):
-  json_object=json.dumps(tabs)
-  with open(path,"w") as outfile:
-    outfile.write(json_object)
+#i used these websites to help me with the json conversion and path existence:
+#https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/?ref=header_search
+#https://www.freecodecamp.org/news/how-to-check-if-a-file-exists-in-python/
 
+def SaveTaps(path):
+  checkpath=os.path.exists(path)
+  if checkpath is True:
+    json_object=json.dumps(tabs)
+    with open(path,"w") as outfile:
+      outfile.write(json_object)
+  else:
+    print("Path does not exist")
 
 #using while loop we take the users input and call the function accordingly
 while True:
