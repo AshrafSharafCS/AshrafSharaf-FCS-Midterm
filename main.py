@@ -61,16 +61,23 @@ def SwitchTab(index):
   if len(tabs)==0:
     return "No Tabs Found"
   else:
-    if 1<=index<=len(tabs):
-      url=str(tabs[index-1]["URL"])
+    if index.isdigit():
+        index=int(index)
+        if 1<=index<=len(tabs):
+          url=str(tabs[index-1]["URL"])
+          page = urlopen(url)
+          soup = BeautifulSoup(page, "html.parser")
+          print(soup.prettify)   
+        else:
+          print("Invalid Input")
+    elif index=="":
+      lastTab=tabs[-1]
+      url=lastTab["URL"]
       page = urlopen(url)
       soup = BeautifulSoup(page, "html.parser")
-      print(soup.prettify)   
+      print(soup.prettify)        
     else:
-      url=str(tabs[-1]["URL"])
-      page = urlopen(url)
-      soup = BeautifulSoup(page, "html.parser")
-      print(soup.prettify)   
+      print("Invalid Input")
 
 #open nested tab function takes an index from the user and opens  nested tab with the given index
 def OpenNestedTab(index,title,url):
@@ -112,6 +119,8 @@ def SaveTaps(path):
       print("Path does not exist")
 
 #import function takes a path as an input and reads the tabs int the json file
+#i used the website below to implement the Import tabs function
+#https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/?ref=header_search
 def ImportTabs(path):
     with open(path, 'r') as openfile:
       checkpath=os.path.exists(path)
@@ -133,10 +142,10 @@ while True:
     url=input("Enter the url for your tab: ")
     print(OpenTab(title,url))
   elif choice=='2':
-    index=int(input("Enter the index of the tab you want to close or press enter to close the last opened tab: "))
+    index=input("Enter the index of the tab you want to close or press enter to close the last opened tab: ")
     print(CloseTab(index))
   elif choice=='3':
-    index=int(input("Enter the index of the tab you want to switch : "))
+    index=input("Enter the index of the tab you want to switch : ")
     SwitchTab(index)
   elif choice=='4':
     DisplayAllTabs(tabs)
