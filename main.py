@@ -82,7 +82,10 @@ def OpenNestedTab(index,title,url):
     else:
       return "Invalid Input"
 
-
+#ClearAllTaps function, cears all tabs in the tabs list
+def ClearAllTabs():
+  tabs.clear()
+  
 
   
 #using while loop we take the users input and call the function accordingly
@@ -107,3 +110,4 @@ while True:
     title=input("Enter a title for your nested tab: ")
     url=input("Enter the url for your nested tab: ")
     print(OpenNestedTab(index,title,url))
+
