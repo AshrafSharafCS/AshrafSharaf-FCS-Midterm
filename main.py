@@ -54,7 +54,12 @@ def SwitchTab(index):
       page = urlopen(url)
       soup = BeautifulSoup(page, "html.parser")
       print(soup.prettify)   
-
+    else:
+      url=str(tabs[-1]["URL"])
+      page = urlopen(url)
+      soup = BeautifulSoup(page, "html.parser")
+      print(soup.prettify)   
+      
         
 #using while loop we take the users input and call the function accordingly
 while True:
