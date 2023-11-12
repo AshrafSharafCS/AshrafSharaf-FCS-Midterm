@@ -156,4 +156,7 @@ while True:
   elif choice=='8':
     path=input("Enter a file path to save the current open tabs: ")
     ImportTabs(path)
- 
+  elif choice=='9':
+    print("Program finished")
+    break
+  
