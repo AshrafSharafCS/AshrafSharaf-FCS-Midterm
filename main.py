@@ -93,6 +93,7 @@ def ClearAllTabs():
     print("Tabs Cleared Successfuly")
 
 #savetaps function save the tabs in the list to a json file
+
 #i used these websites to help me with the json conversion and path existence:
 #https://www.geeksforgeeks.org/reading-and-writing-json-to-a-file-in-python/?ref=header_search
 #https://www.freecodecamp.org/news/how-to-check-if-a-file-exists-in-python/
@@ -110,10 +111,16 @@ def SaveTaps(path):
     else:
       print("Path does not exist")
 
+
 def ImportTabs(path):
   with open(path, 'r') as openfile:
+    checkpath=os.path.exists(path)
+    if checkpath is True:
       json_object = json.load(openfile)
       print(json_object)
+    else: 
+      print("Path does not exist")
+      
   
 
 #using while loop we take the users input and call the function accordingly
@@ -143,4 +150,7 @@ while True:
   elif choice=='7':
     path=input("Enter a file path to save the current open tabs: ")
     SaveTaps(path)
+  elif choice=='8':
+    path=input("Enter a file path to save the current open tabs: ")
+    ImportTabs(path)
  
